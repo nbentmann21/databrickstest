@@ -1,0 +1,1 @@
+# Test af sync fra vs til databricks.
