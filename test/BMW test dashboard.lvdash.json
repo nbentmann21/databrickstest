@@ -172,7 +172,7 @@
               },
               "frame": {
                 "title": "Jeg ønsker at sammenligne mellem farverne, i forhold til solgte",
-                "showTitle": true
+                "showTitle": false
               }
             }
           },
