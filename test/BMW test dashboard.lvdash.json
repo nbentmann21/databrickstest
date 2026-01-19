@@ -1,0 +1,443 @@
+{
+  "datasets": [
+    {
+      "name": "2df5673c",
+      "displayName": "bmw",
+      "queryLines": [
+        "SELECT * FROM workspace.default.bmw"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "86d0e2b9",
+      "displayName": "Untitled page",
+      "layout": [
+        {
+          "widget": {
+            "name": "f205aeec",
+            "multilineTextboxSpec": {
+              "lines": [
+                "<span style=\"text-align:center;display:block;\"><span style=\"font-size: 36px;line-height: 1.5;\">**Dashboard</span><span style=\"font-size: 36px;line-height: 1.5;\">&#32;omkring BMWs salg**</span></span>"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 6,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "salgsmangde-i-forhold-til-farve",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "2df5673c",
+                  "fields": [
+                    {
+                      "name": "Color",
+                      "expression": "`Color`"
+                    },
+                    {
+                      "name": "sum(Sales_Volume)",
+                      "expression": "SUM(`Sales_Volume`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Color",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(Sales_Volume)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Salgsmængde i forhold til farve"
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "jeg-onsker-sammenligne-mellem-farverne-i-forhold-til-solgte",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "2df5673c",
+                  "fields": [
+                    {
+                      "name": "sum(Sales_Volume)",
+                      "expression": "SUM(`Sales_Volume`)"
+                    },
+                    {
+                      "name": "Color",
+                      "expression": "`Color`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "sum(Sales_Volume)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Color",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "frame": {
+                "title": "Jeg ønsker at sammenligne mellem farverne, i forhold til solgte",
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 8,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "bmw-price-distribution-by-fuel-type",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "2df5673c",
+                  "fields": [
+                    {
+                      "name": "sum(Price_USD)",
+                      "expression": "SUM(`Price_USD`)"
+                    },
+                    {
+                      "name": "Fuel_Type",
+                      "expression": "`Fuel_Type`"
+                    },
+                    {
+                      "name": "avg(Price_USD)",
+                      "expression": "AVG(`Price_USD`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Fuel_Type",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "y"
+                    }
+                  }
+                },
+                "y": {
+                  "fieldName": "avg(Price_USD)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "sum(Price_USD)",
+                  "scale": {
+                    "type": "quantitative",
+                    "colorRamp": {
+                      "mode": "scheme",
+                      "scheme": "greenblue"
+                    }
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "frame": {
+                "title": "BMW Price Distribution by Fuel Type",
+                "showTitle": true
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 8,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "sales-classification-compared-to-region",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "2df5673c",
+                  "fields": [
+                    {
+                      "name": "Fuel_Type",
+                      "expression": "`Fuel_Type`"
+                    },
+                    {
+                      "name": "sum(Sales_Volume)",
+                      "expression": "SUM(`Sales_Volume`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "sum(Sales_Volume)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "Fuel_Type",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "x-reversed"
+                    }
+                  }
+                },
+                "color": {
+                  "fieldName": "Fuel_Type",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": false
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 2,
+            "width": 3,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS"
+    },
+    {
+      "name": "8160b3e7",
+      "displayName": "Global Filters",
+      "layout": [
+        {
+          "widget": {
+            "name": "8b41b175",
+            "queries": [
+              {
+                "name": "dashboards/01f0f2b4a971172298b77ff0abd2e605/datasets/01f0f2b4b96811e2a55e8beefec3a2fe_Price_USD",
+                "query": {
+                  "datasetName": "2df5673c",
+                  "fields": [
+                    {
+                      "name": "min(Price_USD)",
+                      "expression": "MIN(`Price_USD`)"
+                    },
+                    {
+                      "name": "max(Price_USD)",
+                      "expression": "MAX(`Price_USD`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "range-slider",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "Price_USD",
+                    "queryName": "dashboards/01f0f2b4a971172298b77ff0abd2e605/datasets/01f0f2b4b96811e2a55e8beefec3a2fe_Price_USD"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "e07eb97a",
+            "spec": {
+              "version": 2,
+              "widgetType": "filter-single-select",
+              "encodings": {},
+              "frame": {
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 1,
+            "height": 2
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_GLOBAL_FILTERS"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}
